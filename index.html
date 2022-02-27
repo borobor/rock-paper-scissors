@@ -14,7 +14,7 @@
 			#container {
 				display: flex;
 				width: 100%;
-				justify-content: space-around;
+				justify-content: space-evenly;
 				margin: 20px;
 			}
 			button {
@@ -22,6 +22,12 @@
 				width: 200px;
 				font-size: 2em;
 				border-width: thick;
+				transition: all .3s ease;
+			}
+			button:hover {
+				transform: scale(1.1);
+				box-shadow: 10px 10px 5px;
+
 			}
 			#results {
 				text-align: center;
