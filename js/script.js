@@ -77,6 +77,7 @@ function theGame() {
 		resetBtn.style.cssText = "height: 50px; width: 200px; background-color: green"
 		div.appendChild(resetBtn);
 		resetBtn.addEventListener('click', resetGame);
+		buttons.forEach((button) => button.disabled = true);
 	}  
 }
 
@@ -88,10 +89,11 @@ function resetGame() {
 	results.innerText = '';
 	score.innerText = '';
 	endResult.innerText = '';
+	buttons.forEach((button) => button.disabled = false);
 	div.removeChild(this);
 }
 
-buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
   button.addEventListener("click", theGame);
