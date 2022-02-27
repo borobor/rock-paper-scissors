@@ -12,6 +12,7 @@ function compPlay() {
 }
 
 let choices = document.createElement("p");
+choices.style.cssText = "font-size: 40px";
 let results = document.createElement("p");
 let div = document.querySelector("#results");
 div.appendChild(choices);
@@ -20,10 +21,10 @@ div.appendChild(results);
 function PlayRound(event) {
   let compChoice = compPlay();
   let userChoice = event.target.id;
-  choices.innerText = `User choice: ${userChoice}\n Computer choice: ${compChoice}\n`;
+  choices.innerText = `Your choice: ${userChoice}\n Computer choice: ${compChoice}\n`;
   if (userChoice == compChoice) {
     results.innerText = "It's a tie!";
-		roundCount--;
+    roundCount--;
   } else if (userChoice == "rock") {
     if (compChoice == "paper") {
       compScore++;
@@ -54,43 +55,47 @@ function PlayRound(event) {
 let score = document.createElement("p");
 div.appendChild(score);
 let endResult = document.createElement("p");
+endResult.style.cssText = "font-size: 40px";
 div.appendChild(endResult);
 let roundCount = 0;
 
 function theGame() {
   PlayRound(event);
-	roundCount++;
-	if (roundCount <= 5) {
-		score.innerText = `----ROUND ${roundCount}----\n`;
-		score.innerText += `Man vs. Machine: ${userScore} - ${compScore}`;
-	}
-	if (roundCount == 5) {
+  roundCount++;
+  if (roundCount <= 5) {
+    score.innerText = `---- ROUND ${roundCount} ----\n`;
+    score.innerText += `Man vs. Machine: ${userScore} - ${compScore}`;
+  }
+  if (roundCount == 5) {
 		if (userScore == compScore) {
 			endResult.innerText += "\nThis one was tight! It's a tie";
-		} else {
+    } else {
 			userScore > compScore
-				? (endResult.innerText += "\nYou won!!")
-				: (endResult.innerText += "\nYou lost :(");
-			}
-		const resetBtn = document.createElement("button");
-		resetBtn.textContent = "Start over!";
-		resetBtn.style.cssText = "height: 50px; width: 200px; background-color: green"
-		div.appendChild(resetBtn);
-		resetBtn.addEventListener('click', resetGame);
-		buttons.forEach((button) => button.disabled = true);
-	}  
+			? (endResult.innerText += "\nYou won 😀")
+			: (endResult.innerText += "\nYou lost 😭");
+    }
+		score.innerText = "---- FINAL SCORE ----\n";
+		score.innerText += `Man vs. Machine: ${userScore} - ${compScore}`;
+		choices.innerText = '';
+		results.innerText = '';
+    const resetBtn = document.createElement("button");
+    resetBtn.textContent = "Start over!";
+    resetBtn.style.cssText =
+      "height: 50px; width: 200px; background-color: green";
+    div.appendChild(resetBtn);
+    resetBtn.addEventListener("click", resetGame);
+    buttons.forEach((button) => (button.disabled = true));
+  }
 }
 
 function resetGame() {
-	roundCount = 0;
-	userScore = 0;
-	compScore = 0;
-	choices.innerText = '';
-	results.innerText = '';
-	score.innerText = '';
-	endResult.innerText = '';
-	buttons.forEach((button) => button.disabled = false);
-	div.removeChild(this);
+  roundCount = 0;
+  userScore = 0;
+  compScore = 0;
+  score.innerText = "";
+  endResult.innerText = "";
+  buttons.forEach((button) => (button.disabled = false));
+  div.removeChild(this);
 }
 
 const buttons = document.querySelectorAll("button");
