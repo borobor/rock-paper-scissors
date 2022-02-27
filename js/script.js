@@ -13,10 +13,7 @@ function compPlay() {
 
 function PlayRound() {
   let compChoice = compPlay();
-  let userChoice = prompt(
-    "Choose rock, paper or scissors:",
-    "rock"
-  ).toLowerCase();
+	let userChoice = this.id;
   console.log(`User choice: ${userChoice}`);
   console.log(`Computer choice: ${compChoice}`);
   if (userChoice == compChoice) {
@@ -64,4 +61,8 @@ function theGame() {
 	}
 }
 
-theGame();
+buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+	button.addEventListener('click', PlayRound);
+})
