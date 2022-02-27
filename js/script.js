@@ -71,8 +71,24 @@ function theGame() {
 			userScore > compScore
 				? (endResult.innerText += "\nYou won!!")
 				: (endResult.innerText += "\nYou lost :(");
-			}		
+			}
+		const resetBtn = document.createElement("button");
+		resetBtn.textContent = "Start over!";
+		resetBtn.style.cssText = "height: 50px; width: 200px; background-color: green"
+		div.appendChild(resetBtn);
+		resetBtn.addEventListener('click', resetGame);
 	}  
+}
+
+function resetGame() {
+	roundCount = 0;
+	userScore = 0;
+	compScore = 0;
+	choices.innerText = '';
+	results.innerText = '';
+	score.innerText = '';
+	endResult.innerText = '';
+	div.removeChild(this);
 }
 
 buttons = document.querySelectorAll("button");
