@@ -12,8 +12,9 @@ function compPlay() {
 }
 
 let choices = document.createElement("p");
-choices.style.cssText = "font-size: 40px";
+choices.style.cssText = "font-size: 30px";
 let results = document.createElement("p");
+results.style.cssText = "font-size: 40px";
 let div = document.querySelector("#results");
 div.appendChild(choices);
 div.appendChild(results);
@@ -23,40 +24,41 @@ function PlayRound(event) {
   let userChoice = event.target.id;
   choices.innerText = `Your choice: ${userChoice}\n Computer choice: ${compChoice}\n`;
   if (userChoice == compChoice) {
-    results.innerText = "It's a tie!";
+    results.innerText = "🏳️ It's a tie! 🏳️";
     roundCount--;
   } else if (userChoice == "rock") {
     if (compChoice == "paper") {
       compScore++;
-      results.innerText = "You lose! Paper beats rock!";
+      results.innerText = "❌ You lose! Paper beats rock! ❌";
     } else {
       userScore++;
-      results.innerText = "You win! Rock beats scissors!";
+      results.innerText = "👌 You win! Rock beats scissors! 👌";
     }
   } else if (userChoice == "paper") {
     if (compChoice == "rock") {
       userScore++;
-      results.innerText = "You win! Paper beats rock!";
+      results.innerText = "👌 You win! Paper beats rock! 👌";
     } else {
       compScore++;
-      results.innerText = "You lose! Scissors beat paper!";
+      results.innerText = "❌ You lose! Scissors beat paper! ❌";
     }
   } else {
     if (compChoice == "rock") {
       compScore++;
-      results.innerText = "You lose! Rock beats scissors!";
+      results.innerText = "❌ You lose! Rock beats scissors! ❌";
     } else {
       userScore++;
-      results.innerText = "You win! Scissors beat paper!";
+      results.innerText = "👌 You win! Scissors beat paper! 👌";
     }
   }
 }
 
-let score = document.createElement("p");
-div.appendChild(score);
 let endResult = document.createElement("p");
 endResult.style.cssText = "font-size: 40px";
 div.appendChild(endResult);
+
+let score = document.createElement("p");
+div.appendChild(score);
 let roundCount = 0;
 
 function theGame() {
